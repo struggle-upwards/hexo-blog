@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>openguass中postgresql的增删改查</title>
+      <link href="/hexo-blog/2024/06/01/openguass%E4%B8%ADpostgresql%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/"/>
+      <url>/hexo-blog/2024/06/01/openguass%E4%B8%ADpostgresql%E7%9A%84%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/</url>
+      
+        <content type="html"><![CDATA[<h2 id="进入数据库"><a href="#进入数据库" class="headerlink" title="进入数据库"></a>进入数据库</h2><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">gsql postgres</span><br></pre></td></tr></table></figure><h3 id="（1）创建用户："><a href="#（1）创建用户：" class="headerlink" title="（1）创建用户："></a>（1）创建用户：</h3><p><code>create user 用户名 with password &quot;用户密码&quot;;</code></p><h3 id="（2）创建数据库："><a href="#（2）创建数据库：" class="headerlink" title="（2）创建数据库："></a>（2）创建数据库：</h3><p><code>create database 数据库名 owner 用户名;</code></p><h3 id="（3）进入数据库："><a href="#（3）进入数据库：" class="headerlink" title="（3）进入数据库："></a>（3）进入数据库：</h3><p><code>gsql -d 数据库名 -p 15400 -r</code></p><h3 id="（4）创建表："><a href="#（4）创建表：" class="headerlink" title="（4）创建表："></a>（4）创建表：</h3><p><code>create table 表名 (字段名 字段类型,字段名 字段类型);</code><br>例：create table mytable (number int,year int);</p><h3 id="（5）向表中添加数据："><a href="#（5）向表中添加数据：" class="headerlink" title="（5）向表中添加数据："></a>（5）向表中添加数据：</h3><p><code>insert into 表名 values (字段值,字段值);</code><br>例：insert into mytable values (1,100),(2,200);</p><h3 id="（6）查看数据表："><a href="#（6）查看数据表：" class="headerlink" title="（6）查看数据表："></a>（6）查看数据表：</h3><p><code>select * from 表名;</code></p><p>查询pg_tables表获取当前数据库中所有表的信息（pg_tables是系统视图）</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from pg_tables</span><br></pre></td></tr></table></figure><p>通常我们只关注public中的表，只需要加上以下查询条件即可</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select tablename from pg_tables where schemaname=&#x27;public&#x27;</span><br></pre></td></tr></table></figure><h3 id="（7）修改表中数据："><a href="#（7）修改表中数据：" class="headerlink" title="（7）修改表中数据："></a>（7）修改表中数据：</h3><p><code>update 表名 set 字段=修改后的字段值 where 字段=字段值;</code><br>例：update mytable set year&#x3D;300 where number&#x3D;2;</p><h3 id="（8）删除数据表中的数据："><a href="#（8）删除数据表中的数据：" class="headerlink" title="（8）删除数据表中的数据："></a>（8）删除数据表中的数据：</h3><p><code>delete 表名 where 字段=字段值;</code><br>例：delete mytable where number&#x3D;1;</p><h3 id="（9）增加表中的字段："><a href="#（9）增加表中的字段：" class="headerlink" title="（9）增加表中的字段："></a>（9）增加表中的字段：</h3><p><code>alter table 表名 add 字段 字段名;</code><br>例1：alter table mytable add country char;<br>例2：alter table mytable add mail char(20);</p><h3 id="（10）退出数据库："><a href="#（10）退出数据库：" class="headerlink" title="（10）退出数据库："></a>（10）退出数据库：</h3><p><code>\q</code></p><h3 id="（11）查看所有用户："><a href="#（11）查看所有用户：" class="headerlink" title="（11）查看所有用户："></a>（11）查看所有用户：</h3><p><code>\du</code></p><h3 id="（12）查看所有数据库："><a href="#（12）查看所有数据库：" class="headerlink" title="（12）查看所有数据库："></a>（12）查看所有数据库：</h3><p><code>\l</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> sql </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> postgresql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>docker命令大全</title>
       <link href="/hexo-blog/2024/06/01/docker%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/"/>
       <url>/hexo-blog/2024/06/01/docker%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</url>
