@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>mysql画er图</title>
+      <link href="/hexo-blog/2024/06/01/mysql%E7%94%BBer%E5%9B%BE/"/>
+      <url>/hexo-blog/2024/06/01/mysql%E7%94%BBer%E5%9B%BE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="数据库画er图"><a href="#数据库画er图" class="headerlink" title="数据库画er图"></a>数据库画er图</h1><p><img src="/hexo-blog/img/note/image-20240601213231375.png" alt="image-20240601213231375"></p><blockquote><p>根据描述直接在navicat画ER图,生成factory,product,department,employee,telephone,manager一共6张表</p></blockquote><p><strong>ER图</strong></p><p><img src="/hexo-blog/img/note/image-20240601213231375.png" alt="image-20240601213847759"></p><p><strong>迁移数据库</strong></p><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS<span class="operator">=</span><span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `test5`.`department`  (</span><br><span class="line">  `id` <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `depart_id` <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`id`, `depart_id`)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `test5`.`employee`  (</span><br><span class="line">  `id` <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NULL</span>,</span><br><span class="line">  `job` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NULL</span>,</span><br><span class="line">  `depart_foreign_id` <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`id`, `depart_foreign_id`)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `test5`.`factory`  (</span><br><span class="line">  `id` <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `address` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NULL</span>,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NULL</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `test5`.`manager`  (</span><br><span class="line">  `id` <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NULL</span>,</span><br><span class="line">  `job` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NULL</span>,</span><br><span class="line">  `depart_foreign_id` <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`id`, `depart_foreign_id`)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `test5`.`product`  (</span><br><span class="line">  `id` <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `name` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NULL</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY (`id`)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `test5`.`table_1`  ();</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> `test5`.`telephone`  (</span><br><span class="line">  `id` <span class="type">int</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  `phone_num` <span class="type">varchar</span>(<span class="number">255</span>) <span class="keyword">NULL</span>,</span><br><span class="line">  `factory_id` <span class="type">int</span> <span class="keyword">NULL</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS<span class="operator">=</span><span class="number">1</span>;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> sql </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> mysql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>mysql第三章作业</title>
       <link href="/hexo-blog/2024/06/01/mysql%E7%AC%AC%E4%B8%89%E7%AB%A0%E4%BD%9C%E4%B8%9A/"/>
       <url>/hexo-blog/2024/06/01/mysql%E7%AC%AC%E4%B8%89%E7%AB%A0%E4%BD%9C%E4%B8%9A/</url>
