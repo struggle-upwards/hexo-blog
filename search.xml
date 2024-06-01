@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>mysql第三章作业</title>
+      <link href="/hexo-blog/2024/06/01/mysql%E7%AC%AC%E4%B8%89%E7%AB%A0%E4%BD%9C%E4%B8%9A/"/>
+      <url>/hexo-blog/2024/06/01/mysql%E7%AC%AC%E4%B8%89%E7%AB%A0%E4%BD%9C%E4%B8%9A/</url>
+      
+        <content type="html"><![CDATA[<h1 id="第三章PPT作业"><a href="#第三章PPT作业" class="headerlink" title="第三章PPT作业"></a>第三章PPT作业</h1><p><img src="/hexo-blog/img/note/20240601mysql.png" alt="练习"></p><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 学号 <span class="keyword">FROM</span> `成绩` <span class="keyword">WHERE</span> 课程号<span class="operator">=</span>&quot;1025&quot; <span class="keyword">AND</span> 成绩<span class="operator">&lt;</span><span class="number">60</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `学生` <span class="keyword">WHERE</span> 姓名 <span class="keyword">LIKE</span> &quot;马%&quot;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> 学号 <span class="keyword">FROM</span> `成绩` <span class="keyword">GROUP</span> <span class="keyword">BY</span> 学号 <span class="keyword">HAVING</span> <span class="built_in">COUNT</span>(课程号)<span class="operator">&gt;=</span><span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> 出生日期,年龄 <span class="keyword">FROM</span> `学生`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> 学号,<span class="built_in">EXTRACT</span>(<span class="keyword">YEAR</span> <span class="keyword">FROM</span> 生日) <span class="keyword">as</span> <span class="keyword">year</span>,<span class="number">2024</span><span class="operator">-</span><span class="built_in">EXTRACT</span>(<span class="keyword">YEAR</span> <span class="keyword">FROM</span> 生日) <span class="keyword">as</span> age <span class="keyword">FROM</span> `学生`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> 学号 <span class="keyword">FROM</span> 成绩 <span class="keyword">WHERE</span> 成绩<span class="operator">&gt;</span>(<span class="keyword">SELECT</span> 学号 <span class="keyword">from</span> 学生 <span class="keyword">WHERE</span> 姓名<span class="operator">=</span>&quot;刘玉&quot;);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> sql </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> mysql </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>gorm一对一</title>
       <link href="/hexo-blog/2024/06/01/gorm%E4%B8%80%E5%AF%B9%E4%B8%80/"/>
       <url>/hexo-blog/2024/06/01/gorm%E4%B8%80%E5%AF%B9%E4%B8%80/</url>
