@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>分治法</title>
+      <link href="/hexo-blog/2024/06/03/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
+      <url>/hexo-blog/2024/06/03/%E5%88%86%E6%B2%BB%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h1><h3 id="主方法"><a href="#主方法" class="headerlink" title="主方法"></a>主方法</h3><p><img src="/hexo-blog/../../themes/butterfly/source/img/note/2024-06-03-20-37-08-image.png"></p><h3 id="分治算法的基本思想"><a href="#分治算法的基本思想" class="headerlink" title="分治算法的基本思想"></a>分治算法的基本思想</h3><p><img src="/hexo-blog/../../themes/butterfly/source/img/note/2024-06-03-20-49-05-image.png"></p><h3 id="Karatsuba算法：大整数乘法的优化算法"><a href="#Karatsuba算法：大整数乘法的优化算法" class="headerlink" title="Karatsuba算法：大整数乘法的优化算法"></a>Karatsuba算法：大整数乘法的优化算法</h3><h4 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h4><p>Karatsuba算法是一种高效的大数乘法技术，它通过递归地分割输入数并使用较少的基本乘法步骤来计算结果，从而显著减少了计算时间。</p><h4 id="算法核心"><a href="#算法核心" class="headerlink" title="算法核心"></a>算法核心</h4><h5 id="分割输入数"><a href="#分割输入数" class="headerlink" title="分割输入数"></a>分割输入数</h5><p>当计算两个大数<code>A</code>和<code>B</code>的乘积时，首先将每个数分为两部分：</p><ul><li><code>A</code>分为<code>A高位</code>和<code>A低位</code></li><li><code>B</code>分为<code>B高位</code>和<code>B低位</code></li></ul><p>假设<code>A</code>和<code>B</code>都是偶数位数，可以表示为：</p><p>A &#x3D; A高位 * 10^(n&#x2F;2) + A低位<br>B &#x3D; B高位 * 10^(n&#x2F;2) + B低位</p><p>其中<code>n</code>是数的总位数。</p><h5 id="减少乘法次数"><a href="#减少乘法次数" class="headerlink" title="减少乘法次数"></a>减少乘法次数</h5><p>常规乘法需要计算四个乘积：</p><ol><li><code>A高位 * B高位</code></li><li><code>A高位 * B低位</code></li><li><code>A低位 * B高位</code></li><li><code>A低位 * B低位</code></li></ol><p>然而，Karatsuba算法巧妙地利用代数恒等式，只需计算三个乘积：</p><ul><li><code>P1 = A高位 * B高位</code></li><li><code>P2 = A低位 * B低位</code></li><li><code>P3 = (A高位 + A低位) * (B高位 + B低位)</code></li></ul><p>然后，原式中的中间项可以表示为<code>P3 - P1 - P2</code>，因此我们有：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">AB = P1 * 10^n + (P3 - P1 - P2) * 10^(n/2) + P2</span><br></pre></td></tr></table></figure><h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>通过这种方法，Karatsuba算法成功地将所需的乘法次数从五项减少到了三项，大大提高了大数乘法的效率。</p><p>代码实现</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;tuple&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取大整数的前后半部分并返回</span></span><br><span class="line"><span class="function">tuple&lt;<span class="type">int</span>, <span class="type">int</span>&gt; <span class="title">get</span><span class="params">(<span class="type">int</span> num, <span class="type">int</span> length)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> num1 = num / <span class="built_in">pow</span>(<span class="number">10</span>, length / <span class="number">2</span>);</span><br><span class="line">    <span class="type">int</span> num2 = num - num1 * <span class="built_in">pow</span>(<span class="number">10</span>, length / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">make_tuple</span>(num1, num2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 大整数乘法</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Karatsuba</span><span class="params">(<span class="type">int</span> A, <span class="type">int</span> B, <span class="type">int</span> length)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> [a1, a2] = <span class="built_in">get</span>(A, length);</span><br><span class="line">    <span class="keyword">auto</span> [b1, b2] = <span class="built_in">get</span>(B, length);</span><br><span class="line">    <span class="keyword">auto</span> [P1, P2, P3] = <span class="built_in">make_tuple</span>(a1 * b1, (a1 + a2) * (b1 + b2), a2 * b2);</span><br><span class="line">    cout &lt;&lt; <span class="function">P1 * <span class="title">pow</span><span class="params">(<span class="number">10</span>, length)</span> + <span class="params">(P2 - P1 - P3)</span> * <span class="title">pow</span><span class="params">(<span class="number">10</span>, length / <span class="number">2</span>)</span> + P3 &lt;&lt; endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>算法的基本概念</title>
       <link href="/hexo-blog/2024/06/03/%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
       <url>/hexo-blog/2024/06/03/%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
