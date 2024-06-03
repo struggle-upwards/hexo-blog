@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>算法的基本概念</title>
+      <link href="/hexo-blog/2024/06/03/%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
+      <url>/hexo-blog/2024/06/03/%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="算法的基本的概念"><a href="#算法的基本的概念" class="headerlink" title="算法的基本的概念"></a>算法的基本的概念</h1><h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><blockquote><p>0个及以上输入</p><p>1个及以上输出</p><p>有穷性(不存在死循环)</p><p>确定性(每次执行的结果一样)</p><p>可行性(不会爆出警告)</p></blockquote><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="渐进复杂性"><a href="#渐进复杂性" class="headerlink" title="渐进复杂性"></a>渐进复杂性</h3><p><img src="/hexo-blog/img/note/2024-06-03-20-17-45-image.png"></p><h3 id="渐进记号"><a href="#渐进记号" class="headerlink" title="渐进记号"></a>渐进记号</h3><p><img src="/hexo-blog/img/note/2024-06-03-20-15-54-image.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>出去吃牛肉自助</title>
       <link href="/hexo-blog/2024/06/03/%E5%87%BA%E5%8E%BB%E5%90%83%E7%89%9B%E8%82%89%E8%87%AA%E5%8A%A9/"/>
       <url>/hexo-blog/2024/06/03/%E5%87%BA%E5%8E%BB%E5%90%83%E7%89%9B%E8%82%89%E8%87%AA%E5%8A%A9/</url>
