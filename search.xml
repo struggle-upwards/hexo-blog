@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>go中解决类型别名与原始类型不匹配的问题</title>
+      <link href="/hexo-blog/2024/06/04/go%E4%B8%AD%E8%A7%A3%E5%86%B3%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D%E4%B8%8E%E5%8E%9F%E5%A7%8B%E7%B1%BB%E5%9E%8B%E4%B8%8D%E5%8C%B9%E9%85%8D%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+      <url>/hexo-blog/2024/06/04/go%E4%B8%AD%E8%A7%A3%E5%86%B3%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D%E4%B8%8E%E5%8E%9F%E5%A7%8B%E7%B1%BB%E5%9E%8B%E4%B8%8D%E5%8C%B9%E9%85%8D%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h3 id="GoLang中解决类型别名与原始类型不匹配的问题"><a href="#GoLang中解决类型别名与原始类型不匹配的问题" class="headerlink" title="GoLang中解决类型别名与原始类型不匹配的问题"></a>GoLang中解决类型别名与原始类型不匹配的问题</h3><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>在Go项目中，我们可能会遇到使用类型别名来封装或简化某些类型定义的情况。例如，在DAO层为了代码组织或接口清晰，可能会对原始类型进行别名定义。然而，当在Service层或其他层级试图使用原始类型时，由于Go的强类型系统，即使类型别名和原始类型具有相同的结构，也会遇到类型不匹配的错误。</p><h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>假设在DAO层定义了一个类型别名<code>Content</code>，它是<code>models.ContentModel</code>的别名。但在Service层，我们尝试返回或使用<code>models.ContentModel</code>类型时，会遇到编译错误，提示类型不匹配。</p><h4 id="原始代码"><a href="#原始代码" class="headerlink" title="原始代码"></a>原始代码</h4><p><strong>ArticleDao.go</strong></p><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Content models.ContentModel</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(dao *ArticleDaoImpl)</span></span> GetContent(id <span class="type">int</span>) Content &#123;</span><br><span class="line"><span class="keyword">var</span> content Content</span><br><span class="line"><span class="keyword">var</span> article = models.ArticleModel&#123;ID: id&#125;</span><br></pre></td></tr></table></figure><p><strong>ArticleService.go</strong></p><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(service *ArticleServiceImpl)</span></span> GetContent(id <span class="type">int</span>) models.ContentModel &#123;</span><br><span class="line">    <span class="keyword">return</span> service.dao.GetContent(id)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><h5 id="方案一：类型转换"><a href="#方案一：类型转换" class="headerlink" title="方案一：类型转换"></a>方案一：类型转换</h5><p>在Service层，可以通过类型转换的方式，将从DAO层获取的<code>Content</code>类型转换为<code>models.ContentModel</code>类型。</p><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(service *ArticleServiceImpl)</span></span> GetContent(id <span class="type">int</span>) models.ContentModel &#123;</span><br><span class="line">    content := service.dao.GetContent(id) <span class="comment">// 此处content类型为Content</span></span><br><span class="line">    <span class="keyword">return</span> models.ContentModel(content)  <span class="comment">// 将Content转换为models.ContentModel</span></span><br><span class="line">&#125; </span><br><span class="line">OR</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(service *ArticleServiceImpl)</span></span> GetContent(id <span class="type">int</span>) dao.Content &#123;</span><br><span class="line"><span class="keyword">return</span> service.dao.GetContent(id)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="方案二：统一类型使用"><a href="#方案二：统一类型使用" class="headerlink" title="方案二：统一类型使用"></a>方案二：统一类型使用</h5><p>更好的实践是在整个项目中统一使用一种类型。这意味着，如果在DAO层使用了<code>Content</code>作为类型别名，那么在Service层也应该使用<code>Content</code>类型。或者，如果决定使用<code>models.ContentModel</code>，则DAO层的<code>GetContent</code>方法应该返回<code>models.ContentModel</code>类型。</p><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(dao *ArticleDaoImpl)</span></span> GetContent(id <span class="type">int</span>) models.ContentModel &#123;</span><br><span class="line">    <span class="keyword">var</span> content models.ContentModel</span><br><span class="line">    <span class="keyword">var</span> article = models.ArticleModel&#123;ID: id&#125;</span><br><span class="line">    dao.DB.Model(&amp;article).Association(<span class="string">&quot;ContentModel&quot;</span>).Find(&amp;content)</span><br><span class="line">    <span class="keyword">return</span> content</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样，Service层可以直接接收<code>models.ContentModel</code>类型，无需进行额外的类型转换。</p><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>在Go项目中，虽然类型别名可以提供代码的清晰度和可读性，但在跨层使用时需要特别注意类型匹配问题。通过类型转换或统一类型使用，我们可以有效地解决类型不匹配的问题，确保项目的顺利运行和代码的高质量。</p><h1 id=""><a href="#" class="headerlink" title=""></a></h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">通过以上修改，可以有效解决由类型别名引起的类型不匹配问题，确保代码的正确性和一致性。</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gin </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>分治法</title>
       <link href="/hexo-blog/2024/06/03/%E5%88%86%E6%B2%BB%E6%B3%95/"/>
       <url>/hexo-blog/2024/06/03/%E5%88%86%E6%B2%BB%E6%B3%95/</url>
