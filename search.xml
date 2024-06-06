@@ -8,7 +8,7 @@
       <link href="/hexo-blog/2024/06/06/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F(%E4%BA%8C)/"/>
       <url>/hexo-blog/2024/06/06/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F(%E4%BA%8C)/</url>
       
-        <content type="html"><![CDATA[<h1 id="编译原理复习正则表达式-二"><a href="#编译原理复习正则表达式-二" class="headerlink" title="编译原理复习正则表达式(二)"></a>编译原理复习正则表达式(二)</h1>]]></content>
+        <content type="html"><![CDATA[<h1 id="编译原理复习正则表达式-二"><a href="#编译原理复习正则表达式-二" class="headerlink" title="编译原理复习正则表达式(二)"></a>编译原理复习正则表达式(二)</h1><h3 id="正则表达式使用L-a-a-，来表示匹配a这个字符，L指的是正则表达式标识符，括号里面可以存放正则表达式"><a href="#正则表达式使用L-a-a-，来表示匹配a这个字符，L指的是正则表达式标识符，括号里面可以存放正则表达式" class="headerlink" title="正则表达式使用L(a)&#x3D;{a}，来表示匹配a这个字符，L指的是正则表达式标识符，括号里面可以存放正则表达式"></a>正则表达式使用L(a)&#x3D;{a}，来表示匹配a这个字符，L指的是正则表达式标识符，括号里面可以存放正则表达式</h3><p><img src="/hexo-blog/./img/note/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F(%E4%BA%8C)/image-20240606173335536.png" alt="image-20240606173335536"></p>]]></content>
       
       
       <categories>
