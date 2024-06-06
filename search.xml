@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>test</title>
+      <link href="/hexo-blog/2024/06/06/test/"/>
+      <url>/hexo-blog/2024/06/06/test/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux chmod命令教程</title>
       <link href="/hexo-blog/2024/06/06/Linux%20chmod%E5%91%BD%E4%BB%A4%E6%95%99%E7%A8%8B/"/>
       <url>/hexo-blog/2024/06/06/Linux%20chmod%E5%91%BD%E4%BB%A4%E6%95%99%E7%A8%8B/</url>
@@ -33,7 +46,7 @@
       <link href="/hexo-blog/2024/06/06/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90(%E4%B8%80)/"/>
       <url>/hexo-blog/2024/06/06/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90(%E4%B8%80)/</url>
       
-        <content type="html"><![CDATA[<h1 id="编译原理复习词法分析-一"><a href="#编译原理复习词法分析-一" class="headerlink" title="编译原理复习词法分析(一)"></a>编译原理复习词法分析(一)</h1><h3 id="扫描程序"><a href="#扫描程序" class="headerlink" title="扫描程序"></a>扫描程序</h3><p>每扫一个字符拿去做判断，标识符(变量)存在字符数组里，记号(token)存在字符里</p><p><img src="/hexo-blog/./img/note/test-1/image-20240606114623650.png" alt="image-20240606114623650"></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="编译原理复习词法分析-一"><a href="#编译原理复习词法分析-一" class="headerlink" title="编译原理复习词法分析(一)"></a>编译原理复习词法分析(一)</h1><h3 id="扫描程序"><a href="#扫描程序" class="headerlink" title="扫描程序"></a>扫描程序</h3><p>每扫一个字符拿去做判断，标识符(变量)存在字符数组里，记号(token)存在字符里</p><p><img src="/hexo-blog/./img/note/test-1/image-20240606114623650.png" alt="image-20240606114623650"></p><h3 id="不同语言的跨平台性"><a href="#不同语言的跨平台性" class="headerlink" title="不同语言的跨平台性"></a>不同语言的跨平台性</h3><p>比如说：</p><ul><li>C++ 需要编译成目标代码，与CPU指令组成，可以直接运行，缺点是跨平台性差，需要相应环境，优点的运行效率快</li><li>Python，直接使用解释器，读一行源程序，翻译成结果，缺点是效率低下，优点是跨平台性较好</li><li>Java，使用JVM虚拟机，虚拟机内将java代码编译成目标代码(不是CPU指令)，再通过解释器形成结果，结合了以上两种方式，跨平台性非常好</li></ul><p><img src="/hexo-blog/./img/note/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90(%E4%B8%80)/image-20240606163557134.png" alt="image-20240606163557134"></p>]]></content>
       
       
       <categories>
