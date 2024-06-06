@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>Linux chmod命令教程</title>
+      <link href="/hexo-blog/2024/06/06/Linux%20chmod%E5%91%BD%E4%BB%A4%E6%95%99%E7%A8%8B/"/>
+      <url>/hexo-blog/2024/06/06/Linux%20chmod%E5%91%BD%E4%BB%A4%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Linux-chmod命令教程：如何更改文件和目录的权限（附实例详解和注意事项）"><a href="#Linux-chmod命令教程：如何更改文件和目录的权限（附实例详解和注意事项）" class="headerlink" title="Linux chmod命令教程：如何更改文件和目录的权限（附实例详解和注意事项）"></a>Linux chmod命令教程：如何更改文件和目录的权限（附实例详解和注意事项）</h1><h3 id="Linux-chmod命令介绍"><a href="#Linux-chmod命令介绍" class="headerlink" title="Linux chmod命令介绍"></a>Linux chmod命令介绍</h3><p><code>chmod</code>（全称：change mode）命令是用来更改文件或目录的权限。在Linux&#x2F;Unix中，文件的权限分为三级：文件所有者（Owner）、用户组（Group）、其他用户（Other Users）。只有文件所有者和超级用户可以修改文件或目录的权限。</p><h3 id="Linux-chmod命令适用的Linux版本"><a href="#Linux-chmod命令适用的Linux版本" class="headerlink" title="Linux chmod命令适用的Linux版本"></a>Linux chmod命令适用的Linux版本</h3><p><code>chmod</code>命令在所有主流的Linux发行版中都是可用的，包括但不限于Debian、Ubuntu、Alpine、Arch Linux、Kali Linux、RedHat&#x2F;CentOS、Fedora、Raspbian等。如果某个Linux发行版中没有预装<code>chmod</code>命令，用户可以通过该发行版的包管理器（如apt、yum、dnf、pacman等）来安装。</p><p>例如，在Debian或Ubuntu上，可以使用以下命令来安装：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[linux@bashcommandnotfound.cn ~]$ sudo apt-get update</span><br><span class="line">[linux@bashcommandnotfound.cn ~]$ sudo apt-get install coreutils</span><br></pre></td></tr></table></figure><p>在CentOS 7上，可以使用以下命令来安装：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[linux@bashcommandnotfound.cn ~]$ sudo yum update</span><br><span class="line">[linux@bashcommandnotfound.cn ~]$ sudo yum install coreutils</span><br></pre></td></tr></table></figure><p>在CentOS 8上，可以使用以下命令来安装：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[linux@bashcommandnotfound.cn ~]$ sudo dnf update</span><br><span class="line">[linux@bashcommandnotfound.cn ~]$ sudo dnf install coreutils</span><br></pre></td></tr></table></figure><h3 id="Linux-chmod命令的基本语法"><a href="#Linux-chmod命令的基本语法" class="headerlink" title="Linux chmod命令的基本语法"></a>Linux chmod命令的基本语法</h3><p><code>chmod</code>命令的基本语法如下：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod [options] mode file...</span><br></pre></td></tr></table></figure><p>其中，<code>mode</code>是权限设定字符串，<code>file</code>是要更改权限的文件或目录。</p><h3 id="Linux-chmod命令的常用选项或参数说明"><a href="#Linux-chmod命令的常用选项或参数说明" class="headerlink" title="Linux chmod命令的常用选项或参数说明"></a>Linux chmod命令的常用选项或参数说明</h3><p><strong>以下是<code>chmod</code>命令的一些常用选项：</strong></p><table><thead><tr><th>选项</th><th>说明</th></tr></thead><tbody><tr><td>-R</td><td>对当前目录及其子目录进行递归更改</td></tr><tr><td>-c</td><td>只有在文件权限确实更改时才显示其更改动作</td></tr><tr><td>-f</td><td>如果文件权限无法更改，不显示错误信息</td></tr><tr><td>-v</td><td>显示权限变更的详细信息</td></tr></tbody></table><h3 id="Linux-chmod命令实例详解"><a href="#Linux-chmod命令实例详解" class="headerlink" title="Linux chmod命令实例详解"></a>Linux chmod命令实例详解</h3><h4 id="实例1：更改文件权限"><a href="#实例1：更改文件权限" class="headerlink" title="实例1：更改文件权限"></a>实例1：更改文件权限</h4><p>假设我们有一个名为<code>file1.txt</code>的文件，我们想要给所有用户增加读取权限，可以使用以下命令：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[linux@bashcommandnotfound.cn ~]$ chmod a+r file1.txt</span><br></pre></td></tr></table></figure><p>这个命令将给<code>file1.txt</code>的所有用户增加读取权限。</p><h4 id="实例2：删除执行权限"><a href="#实例2：删除执行权限" class="headerlink" title="实例2：删除执行权限"></a>实例2：删除执行权限</h4><p>如果我们想要删除所有用户对<code>file1.txt</code>的执行权限，可以使用以下命令：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[linux@bashcommandnotfound.cn ~]$ chmod a-x file1.txt</span><br></pre></td></tr></table></figure><p>这个命令将删除所有用户对<code>file1.txt</code>的执行权限。</p><h4 id="实例3：递归更改目录权限"><a href="#实例3：递归更改目录权限" class="headerlink" title="实例3：递归更改目录权限"></a>实例3：递归更改目录权限</h4><p>如果我们想要递归地给一个目录及其所有子目录和文件增加读取权限，可以使用以下命令：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[linux@bashcommandnotfound.cn ~]$ chmod -R a+r directory</span><br></pre></td></tr></table></figure><p>这个命令将给<code>directory</code>及其所有子目录和文件的所有用户增加读取权限。</p><h4 id="实例4：设置特定权限"><a href="#实例4：设置特定权限" class="headerlink" title="实例4：设置特定权限"></a>实例4：设置特定权限</h4><p>假如我们希望设置文件所有者具有读取、写入和执行权限（rwx），其他用户则仅有读取权限（r），可以用数值方式表示，并使用以下命令：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[linux@bashcommandnotfound.cn ~]$ chmod 744 file1.txt</span><br></pre></td></tr></table></figure><p>这个命令设置<code>file1.txt</code>的权限，使得文件所有者具有读取、写入和执行权限，其他用户则仅有读取权限。</p><h4 id="实例5：用符号表示法设置权位"><a href="#实例5：用符号表示法设置权位" class="headerlink" title="实例5：用符号表示法设置权位"></a>实例5：用符号表示法设置权位</h4><p>我们同时还可以以user，group，others的形式使用符号来赋予文件权限。例如，我们希望给文件所有者增加执行权限，可以使用以下命令：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[linux@bashcommandnotfound.cn ~]$ chmod u+x file1.txt</span><br></pre></td></tr></table></figure><p>这个命令将给<code>file1.txt</code>的文件所有者增加执行权限。</p><h4 id="实例6：以符号表示法删除权限"><a href="#实例6：以符号表示法删除权限" class="headerlink" title="实例6：以符号表示法删除权限"></a>实例6：以符号表示法删除权限</h4><p>假如我们想移除文件组的写入权限，可以使用以下命令：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[linux@bashcommandnotfound.cn ~]$ chmod g-w file1.txt</span><br></pre></td></tr></table></figure><p>这个命令将移除<code>file1.txt</code>的文件组写入权限。</p><h4 id="实例7-同时设置用户组和其他用户权限"><a href="#实例7-同时设置用户组和其他用户权限" class="headerlink" title="实例7: 同时设置用户组和其他用户权限"></a>实例7: 同时设置用户组和其他用户权限</h4><p>如果想要同时设置用户组（g）和其他用户（o）的权限，可以使用逗号将它们分开。例如，如果希望给用户组增加写权限，并给其他用户增加读权限，可以使用以下命令：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[linux@bashcommandnotfound.cn ~]$ chmod g+w,o+r file1.txt</span><br></pre></td></tr></table></figure><p>此命令将给<code>file1.txt</code>的用户组增加写权限，并给其他用户增加读权限。</p><h4 id="实例8：赋予所有权限"><a href="#实例8：赋予所有权限" class="headerlink" title="实例8：赋予所有权限"></a>实例8：赋予所有权限</h4><p>如果我们希望赋予文件所有用户所有权限，可以使用以下命令：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[linux@bashcommandnotfound.cn ~]$ chmod 777 file1.txt</span><br></pre></td></tr></table></figure><p>此命令将赋予<code>file1.txt</code>所有用户（用户组和其他用户）所有的读取、写入和执行权限。</p><h4 id="实例9：移除所有权限"><a href="#实例9：移除所有权限" class="headerlink" title="实例9：移除所有权限"></a>实例9：移除所有权限</h4><p>反之，如果我们希望移除文件的所有权限，可以使用以下命令：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[linux@bashcommandnotfound.cn ~]$ chmod 000 file1.txt</span><br></pre></td></tr></table></figure><p>此命令将移除<code>file1.txt</code>所有用户（用户组和其他用户）的所有权限，即无法进行读取、写入或执行该文件。</p><h3 id="Linux-chmod命令的注意事项"><a href="#Linux-chmod命令的注意事项" class="headerlink" title="Linux chmod命令的注意事项"></a>Linux chmod命令的注意事项</h3><ul><li>使用<code>chmod</code>命令时，需要注意文件的所有者和当前用户的关系。只有文件的所有者和超级用户可以更改文件的权限。</li><li>在使用<code>chmod</code>命令时，如果遇到<code>bash: chmod: command not found</code>的错误，可以按照上面的方法安装<code>chmod</code>命令。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>编译原理复习词法分析(一)</title>
+      <link href="/hexo-blog/2024/06/06/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90(%E4%B8%80)/"/>
+      <url>/hexo-blog/2024/06/06/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E5%A4%8D%E4%B9%A0%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90(%E4%B8%80)/</url>
+      
+        <content type="html"><![CDATA[<h1 id="编译原理复习词法分析-一"><a href="#编译原理复习词法分析-一" class="headerlink" title="编译原理复习词法分析(一)"></a>编译原理复习词法分析(一)</h1><h3 id="扫描程序"><a href="#扫描程序" class="headerlink" title="扫描程序"></a>扫描程序</h3><p>每扫一个字符拿去做判断，标识符(变量)存在字符数组里，记号(token)存在字符里</p><p><img src="/hexo-blog/./img/note/test-1/image-20240606114623650.png" alt="image-20240606114623650"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编译原理 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>操作系统的覆盖与交换</title>
       <link href="/hexo-blog/2024/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%A6%86%E7%9B%96%E4%B8%8E%E4%BA%A4%E6%8D%A2/"/>
       <url>/hexo-blog/2024/06/05/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%A6%86%E7%9B%96%E4%B8%8E%E4%BA%A4%E6%8D%A2/</url>
