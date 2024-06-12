@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>从E-R模型到关系模型 | struggle_forwards</title><meta name="author" content="浩瀚星河"><meta name="copyright" content="浩瀚星河"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="从E-R模型到关系模型E-R模型和关系模型都是现实世界抽象的逻辑表示  E-R模型并不被 DBMS直接支持，更适合对现实世界建模 关系模型是 DBMS直接支持的数据模型  基本 E-R图中的元素包括实体集、联系集、属性 椭圆框表示属性，矩形框表示实体集，菱形框表示联系  属性处理关系模型要求关系的所有属性都是原子的。然而 E-R模型中的复合属性和多值属性不是原子的，E-R模型还允许出现派生属性，这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从E-R模型到关系模型">
+<meta property="og:url" content="https://struggle-upwards.github.io/hexo-blog/2024/06/12/%E4%BB%8EE-R%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="struggle_forwards">
+<meta property="og:description" content="从E-R模型到关系模型E-R模型和关系模型都是现实世界抽象的逻辑表示  E-R模型并不被 DBMS直接支持，更适合对现实世界建模 关系模型是 DBMS直接支持的数据模型  基本 E-R图中的元素包括实体集、联系集、属性 椭圆框表示属性，矩形框表示实体集，菱形框表示联系  属性处理关系模型要求关系的所有属性都是原子的。然而 E-R模型中的复合属性和多值属性不是原子的，E-R模型还允许出现派生属性，这">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://struggle-upwards.github.io/hexo-blog/img/avatar.png">
+<meta property="article:published_time" content="2024-06-12T05:54:12.000Z">
+<meta property="article:modified_time" content="2024-06-12T05:56:16.591Z">
+<meta property="article:author" content="浩瀚星河">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://struggle-upwards.github.io/hexo-blog/img/avatar.png"><link rel="shortcut icon" href="/hexo-blog/img/favicon.png"><link rel="canonical" href="https://struggle-upwards.github.io/hexo-blog/2024/06/12/%E4%BB%8EE-R%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/hexo-blog/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/hexo-blog/',
+  algolia: undefined,
+  localSearch: {"path":"/hexo-blog/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '从E-R模型到关系模型',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-12 13:56:16'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/hexo-blog/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/hexo-blog/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/hexo-blog/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/hexo-blog/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/hexo-blog/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="https://struggle-upwards.github.io/"><i class="fa-fw fa fa-book"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/hexo-blog/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/hexo-blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/hexo-blog/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/hexo-blog/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/hexo-blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/hexo-blog/img/default_top_img.png')"><nav id="nav"><span id="blog-info"><a href="/hexo-blog/" title="struggle_forwards"><span class="site-name">struggle_forwards</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/hexo-blog/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="https://struggle-upwards.github.io/"><i class="fa-fw fa fa-book"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/hexo-blog/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/hexo-blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/hexo-blog/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/hexo-blog/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/hexo-blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">从E-R模型到关系模型</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-12T05:54:12.000Z" title="发表于 2024-06-12 13:54:12">2024-06-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-12T05:56:16.591Z" title="更新于 2024-06-12 13:56:16">2024-06-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/hexo-blog/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="从E-R模型到关系模型"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="从E-R模型到关系模型"><a href="#从E-R模型到关系模型" class="headerlink" title="从E-R模型到关系模型"></a>从E-R模型到关系模型</h1><p>E-R模型和关系模型都是现实世界抽象的逻辑表示</p>
+<ul>
+<li>E-R模型并不被 DBMS直接支持，更适合对现实世界建模</li>
+<li>关系模型是 DBMS直接支持的数据模型</li>
+</ul>
+<p>基本 E-R图中的元素包括实体集、联系集、属性</p>
+<p>椭圆框表示属性，矩形框表示实体集，菱形框表示联系</p>
+<p><img src="/hexo-blog/./img/note/%E4%BB%8EE-R%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pqdXd4eA==,size_16,color_FFFFFF,t_70.png"></p>
+<h2 id="属性处理"><a href="#属性处理" class="headerlink" title="属性处理"></a>属性处理</h2><p>关系模型要求关系的所有属性都是原子的。然而 E-R模型中的复合属性和多值属性不是原子的，E-R模型还允许出现派生属性，这三种属性需要特殊处理</p>
+<p>（1）派生属性</p>
+<p>派生属性的值可以通过计算得到，它的值不在数据库中存储，转换时直接忽略</p>
+<p>（2）复合属性</p>
+<p>采用”展平”技术：忽略复合属性本身，直接考虑它的成分属性。如果某个成分属性仍然是复合的，用相同方法处理</p>
+<p><em>例如，考虑实体集职工复合属性”家庭住址”，它包含成分属性省、城市、街道、邮政编码。在将该实体集转换成关系模式时，忽略复合属性”家庭住址”，而直接使用成分属性省、城市、街道、邮政编码作为关系模式的属性</em></p>
+<p>（3）多值属性</p>
+<p>需要为每个多值属性 M创建一个关系 RMRMR_{M}</p>
+<ol>
+<li>如果多值属性 M是实体集 E的属性，K是 E的主码，则关系 RMRMR_{M}的属性由 M和 K组成</li>
+<li>如果多值属性 M是联系集 R的属性，并且 R涉及实体集 E1，…，En，它们的主码分别是 K1，…，Kn，则关系 RMRMR_{M}的属性由 M和 K1，…，Kn组成</li>
+</ol>
+<p>注意：如果 M还是复合属性，则需要按复合属性的处理方法对 M做”展平”处理。关系 RMRMR_{M}的码需要根据实际问题的语义确定。此外一旦为多值属性创建了关系，后续处理就不再考虑多值属性</p>
+<hr>
+<p><strong>例1、多值属性转换</strong></p>
+<p>如总图，Phones 是实体集 Departments 的多值属性，为其创建一个关系。由于 Phones还是复合属性，需要对它做”展平”处理：直接使用其成分属性 Office 和 Phone#。实体集 Departments 的码是 Dno。由此得到多值属性 Phones 的关系模式为：<strong>Phones(Phone#, Dno, Office)</strong></p>
+<p>假定每部电话都在一个院系的办公室，因此 Phone# 可以作为 Phones 的码</p>
+<p>注意：这里把为多值属性 Phones 创建的关系用 Phones 命名。原则上如何命名没有规定，但是采用容易记忆的名字有助于理解，并且当多值属性是复合属性时，直接使用多值属性名作为关系名是方便的</p>
+<h2 id="实体集处理"><a href="#实体集处理" class="headerlink" title="实体集处理"></a>实体集处理</h2><blockquote>
+<p><strong>强 &#x2F; 弱实体集</strong></p>
+<p>一般地，如果一个实体集的<strong>任何属性集都不足以形成该实体集的码</strong>，则称该实体集为<strong>弱实体集</strong>。与此相对，存在码的实体集称为强实体集</p>
+<p>弱实体集中的任何实体（简称弱实体）都不能独立地存在于系统中，即每个弱实体必须依赖于一个强实体。<em>例如每个家属必须存在依赖于一个特定的职工（只有这样他才被公司视为家属），当一位职工离开公司，他的配偶和子女都不再被公司视为家属</em></p>
+<ul>
+<li>弱实体集必须与另一个称为<strong>标识实体集</strong>或属主实体集的强实体集相关联才有意义</li>
+<li>称标识实体集拥有它所标识的弱实体集，将弱实体集与其标识实体集相关联的的联系称为<strong>标识性联系</strong></li>
+<li><strong>标识性联系是</strong>从弱实体集到标识实体集的<strong>多对一联系</strong>，并且弱实体集对该联系的参与是全部参与</li>
+</ul>
+<p>在弱实体集中，如果它的一个属性集可以唯一确定 存在依赖于同一个强实体的弱实体，则称该属性集为弱实体集的<strong>分辨符</strong>。弱实体集的标识实体集的码和该弱实体集的分辨符共同形成弱实体集的码，弱实体集的分辨符又称弱实体集的部分码</p>
+</blockquote>
+<p>每个强实体集用一个关系表示。实体集名可以作为关系名，实体集的全部属性构成关系的属性（复合属性按照前面的方法”展平”），实体集的码作为关系的码</p>
+<p>每个弱实体集用一个关系表示。弱实体集名可以作为关系名，弱实体集存在依赖的标识实体集的主码和弱实体集的全部属性构成关系的属性（复合属性按照前面的方法”展平”），标识实体集的码和弱实体集的分辨符组合成关系的码。下图给出了强实体集职工和弱实体集家属转换后的关系模式</p>
+<p><img src="https://img-blog.csdnimg.cn/20190719161620360.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pqdXd4eA==,size_16,color_FFFFFF,t_70"></p>
+<h2 id="联系集处理"><a href="#联系集处理" class="headerlink" title="联系集处理"></a>联系集处理</h2><p>每个联系集用一个关系表示，但弱实体集与其标识实体集之间的存在依赖关系忽略</p>
+<p>联系集名可以作为关系名，参与联系的诸实体集的主码和联系集的属性（复合属性按照前面的方法”展平”）形成关系的属性</p>
+<p>关系的码根据联系的类型按如下方法确定</p>
+<p><img src="https://img-blog.csdnimg.cn/20190719161537657.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pqdXd4eA==,size_16,color_FFFFFF,t_70"></p>
+<p>联系集转关系时，先找到一个联系集，然后顺着连线找到关联的多个实体集。观察实体集间的连线：</p>
+<ol>
+<li>连线的两端都有箭头，说明是<strong>一对一的联系</strong>，<strong>新的主码是两关系的候选码中的一个</strong>（两个候选码都画有下划线，但下划线不相连，具体哪个是主码，自定）</li>
+<li>连线的一端有箭头，说明是<strong>一对多的联系</strong>，箭头一端是”单端”，新<strong>的主码由”多端”实体集的码组成</strong></li>
+<li>连线两端都没箭头，说明是<strong>多对多的联系</strong>，<strong>新的主码由所有实体集的码组成</strong></li>
+</ol>
+<h2 id="将基本-E-R图转换成关系模式"><a href="#将基本-E-R图转换成关系模式" class="headerlink" title="将基本 E-R图转换成关系模式"></a>将基本 E-R图转换成关系模式</h2><p>为了将联系转换成关系模式，要求参与同一联系的任何两个不同的实体集的主码都不包含相同的属性（这一点容易做到，属性是局部于实体集的，必要时可以对某些属性重命名）</p>
+<p>假定复合属性已经”展平”，多值属性创建了对应的关系。将 E-R模型转换成关系模式的方法如下</p>
+<ol>
+<li>每个强实体集用一个关系表示</li>
+<li>每个弱实体集用一个关系表示</li>
+<li>将联系集用相应的方法转换成关系表示</li>
+<li>如果两个关系具有相同的码，可以合并它们（这一步并非必须，但可以减少码重复存放空间开销，使查询可以更有效的求值）</li>
+</ol>
+<hr>
+<p><strong>例2、将总图转换成关系模式</strong></p>
+<p>总图的多值复合属性 Phones 得到关系模式：<strong>Phones(Phone#, Dno, Office)</strong></p>
+<p>总图没有弱实体集，由强实体集得到如下关系模式：</p>
+<p><strong>Departments(Dno, Dname)</strong></p>
+<p><strong>Teachers(Tno, Tname, Sex, Birthday, Title)</strong></p>
+<p><strong>Students(Sno, Sname, Sex, Birthday, Enrollyear, Speciality)</strong></p>
+<p><strong>Courses(Cno, Cname, Perid, Credit)</strong></p>
+<p>其中每个关系模式都源于同名实体集，码用下划线标记。多值属性 Phones 不包含在关系模式 Departments 中，已经将它转换成关系模式</p>
+<p>由联系集得到如下关系模式：</p>
+<p><strong>Manades(Dno,  Tno)</strong></p>
+<p><strong>Works_in(Tno, Dno)</strong></p>
+<p><strong>Studies_in(Sno, Dno)</strong></p>
+<p><strong>Teaches(Tno, Cno)</strong></p>
+<p><strong>SC(Sno, Cno, Grade)</strong></p>
+<p><strong>Evalues(Sno, Tno, Cno, Escore)</strong></p>
+<p>其中每个关系模式都源于同名联系集，码用下划线标记。Manages 和 Works_in 包含相同的属性，但它们含义不同，前者 Tno 表示作为系主任的教师对特定的”系”（用 Tno 表示）的管理，后者表示每位教师在一个特定的系工作</p>
+<p>最后一步，合并具有相同码的关系模式（合并时可根据实际情况，也可根据题设要求）</p>
+<p>Manages 可以和 Departments 合并，也可以与 Teachers 合并，前者有利于回答 <em>“某系的主任是谁”</em> 之类的问题，后者有利于回答 <em>“某教师的系主任是谁”</em> 之类的问题。前一类问题更常出现，采用前一种方法，得到关系模式 **Departments(Dno, Dname, Dheadno)**（把表示系主任的职工号的属性名 Tno 改为 Dheadno，使得属性的语义更清楚）</p>
+<p>还有两对关系具有相同的码，<strong>Teachers</strong> 和 <strong>Works_in</strong>，<strong>Students</strong> 和 <strong>Studies_in</strong>，都可以直接合并。最终得到关系模式：</p>
+<p><strong>Departments(Dno, Dname, Dheadno)</strong></p>
+<p><strong>Teachers(Tno, Tname, Sex, Birthday, Title, Tno)</strong></p>
+<p><strong>Students(Sno, Sname, Sex, Birthday, Enrollyear, Speciality, Dno)</strong></p>
+<p><strong>Courses(Cno, Cname, Perid, Credit)</strong></p>
+<p><strong>Teaches(Tno, Cno)</strong></p>
+<p><strong>SC(Sno, Cno, Grade)</strong></p>
+<p><strong>Evalues(Sno, Tno, Cno, Escore)</strong></p>
+<p><strong>Phones(Phone#, Dno, Office)</strong></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://struggle-upwards.github.io/hexo-blog">浩瀚星河</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://struggle-upwards.github.io/hexo-blog/2024/06/12/%E4%BB%8EE-R%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B/">https://struggle-upwards.github.io/hexo-blog/2024/06/12/从E-R模型到关系模型/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://struggle-upwards.github.io/hexo-blog" target="_blank">struggle_forwards</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/hexo-blog/tags/mysql/">mysql</a></div><div class="post_share"><div class="social-share" data-image="/hexo-blog/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/hexo-blog/2024/06/12/gin%20%E7%94%9F%E6%88%90%20Swagger%20%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/" title="Gin 生成 Swagger 接口文档"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Gin 生成 Swagger 接口文档</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/hexo-blog/2024/06/01/mysql%E7%94%BBer%E5%9B%BE/" title="mysql画er图"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-01</div><div class="title">mysql画er图</div></div></a></div><div><a href="/hexo-blog/2024/06/01/mysql%E7%AC%AC%E4%B8%89%E7%AB%A0%E4%BD%9C%E4%B8%9A/" title="mysql第三章作业"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-01</div><div class="title">mysql第三章作业</div></div></a></div><div><a href="/hexo-blog/2024/06/01/sqloj%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BD%9C%E4%B8%9A/" title="sqloj数据库作业"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-01</div><div class="title">sqloj数据库作业</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/hexo-blog/img/avatar.png" onerror="this.onerror=null;this.src='/hexo-blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">浩瀚星河</div><div class="author-info__description">一位编程爱好者</div></div><div class="card-info-data site-data is-center"><a href="/hexo-blog/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/hexo-blog/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/hexo-blog/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/struggle-upwards" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://blog.csdn.net/Pzj15817073966?type=blog" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是我的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8EE-R%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B"><span class="toc-text">从E-R模型到关系模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E5%A4%84%E7%90%86"><span class="toc-text">属性处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E9%9B%86%E5%A4%84%E7%90%86"><span class="toc-text">实体集处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E7%B3%BB%E9%9B%86%E5%A4%84%E7%90%86"><span class="toc-text">联系集处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E5%9F%BA%E6%9C%AC-E-R%E5%9B%BE%E8%BD%AC%E6%8D%A2%E6%88%90%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%BC%8F"><span class="toc-text">将基本 E-R图转换成关系模式</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hexo-blog/2024/06/12/%E4%BB%8EE-R%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B/" title="从E-R模型到关系模型">从E-R模型到关系模型</a><time datetime="2024-06-12T05:54:12.000Z" title="发表于 2024-06-12 13:54:12">2024-06-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hexo-blog/2024/06/12/gin%20%E7%94%9F%E6%88%90%20Swagger%20%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/" title="Gin 生成 Swagger 接口文档">Gin 生成 Swagger 接口文档</a><time datetime="2024-06-11T18:39:48.000Z" title="发表于 2024-06-12 02:39:48">2024-06-12</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/hexo-blog/img/default_top_img.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 浩瀚星河</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/hexo-blog/js/utils.js?v=4.13.0"></script><script src="/hexo-blog/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/hexo-blog/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
