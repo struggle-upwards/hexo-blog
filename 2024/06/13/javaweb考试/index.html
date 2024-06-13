@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>javaweb考试 | struggle_forwards</title><meta name="author" content="浩瀚星河"><meta name="copyright" content="浩瀚星河"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="（1）MVC模式的详细说明及MyShop实例分析MVC模式概述：     MVC（Model-View-Controller）是一种软件架构设计模式，将应用程序划分为三个核心组件：  Model（模型）：负责封装数据和业务逻辑，如数据库操作、计算等，它是应用程序的核心，独立于用户界面。  View（视图）：负责展示数据给用户，它从模型获取数据并格式化输出，但不包含业务逻辑。  Controller">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javaweb考试">
+<meta property="og:url" content="https://struggle-upwards.github.io/hexo-blog/2024/06/13/javaweb%E8%80%83%E8%AF%95/index.html">
+<meta property="og:site_name" content="struggle_forwards">
+<meta property="og:description" content="（1）MVC模式的详细说明及MyShop实例分析MVC模式概述：     MVC（Model-View-Controller）是一种软件架构设计模式，将应用程序划分为三个核心组件：  Model（模型）：负责封装数据和业务逻辑，如数据库操作、计算等，它是应用程序的核心，独立于用户界面。  View（视图）：负责展示数据给用户，它从模型获取数据并格式化输出，但不包含业务逻辑。  Controller">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://struggle-upwards.github.io/hexo-blog/img/avatar.png">
+<meta property="article:published_time" content="2024-06-13T10:49:09.000Z">
+<meta property="article:modified_time" content="2024-06-13T11:25:59.475Z">
+<meta property="article:author" content="浩瀚星河">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://struggle-upwards.github.io/hexo-blog/img/avatar.png"><link rel="shortcut icon" href="/hexo-blog/img/favicon.png"><link rel="canonical" href="https://struggle-upwards.github.io/hexo-blog/2024/06/13/javaweb%E8%80%83%E8%AF%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/hexo-blog/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/hexo-blog/',
+  algolia: undefined,
+  localSearch: {"path":"/hexo-blog/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'javaweb考试',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-13 19:25:59'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/hexo-blog/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/hexo-blog/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/hexo-blog/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/hexo-blog/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/hexo-blog/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="https://struggle-upwards.github.io/"><i class="fa-fw fa fa-book"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/hexo-blog/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/hexo-blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/hexo-blog/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/hexo-blog/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/hexo-blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/hexo-blog/img/default_top_img.png')"><nav id="nav"><span id="blog-info"><a href="/hexo-blog/" title="struggle_forwards"><span class="site-name">struggle_forwards</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/hexo-blog/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="https://struggle-upwards.github.io/"><i class="fa-fw fa fa-book"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/hexo-blog/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/hexo-blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/hexo-blog/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/hexo-blog/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/hexo-blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">javaweb考试</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-13T10:49:09.000Z" title="发表于 2024-06-13 18:49:09">2024-06-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-13T11:25:59.475Z" title="更新于 2024-06-13 19:25:59">2024-06-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/hexo-blog/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="javaweb考试"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="（1）MVC模式的详细说明及MyShop实例分析"><a href="#（1）MVC模式的详细说明及MyShop实例分析" class="headerlink" title="（1）MVC模式的详细说明及MyShop实例分析"></a>（1）MVC模式的详细说明及MyShop实例分析</h3><p><strong>MVC模式概述：</strong><br>     MVC（Model-View-Controller）是一种软件架构设计模式，将应用程序划分为三个核心组件：</p>
+<ul>
+<li><p><strong>Model（模型）</strong>：负责封装数据和业务逻辑，如数据库操作、计算等，它是应用程序的核心，独立于用户界面。</p>
+</li>
+<li><p><strong>View（视图）</strong>：负责展示数据给用户，它从模型获取数据并格式化输出，但不包含业务逻辑。</p>
+</li>
+<li><p><strong>Controller（控制器）</strong>：接收用户输入并调用模型和视图去完成用户请求，起到中间人的角色。</p>
+<p><img src="/hexo-blog/./img/note/javaweb%E8%80%83%E8%AF%95/7e498763c1af4882952a82b5b0bc6ca1tplv-k3u1fbpfcp-zoom-in-crop-mark1512000.webp" alt="传统MVC"></p>
+</li>
+</ul>
+<h4 id="Model（模型）"><a href="#Model（模型）" class="headerlink" title="Model（模型）"></a>Model（模型）</h4><p><strong>模型层</strong>主要负责数据处理和业务逻辑。</p>
+<ul>
+<li><strong>GoodsSingle.java</strong>：这是模型层的一部分，代表了商品单品的数据结构，包括商品的ID、名称、图片名、数量和价格等属性，以及它们的getter和setter方法。此外，还定义了特殊的方法如<code>toString()</code>和特定构造方法来处理数据的转换和初始化，这些都属于模型层的职责。</li>
+<li><strong>ShopCar.java</strong>：同样属于模型层，负责维护购物车的状态，包括添加商品、移除商品、更新商品数量和清空购物车等操作。<code>ArrayList&lt;GoodsSingle&gt; buylist</code>用来存储购物车中的商品，而<code>addItem</code>, <code>removeItem</code>, <code>clearCar</code>等方法则是对购物车数据进行操作的业务逻辑。</li>
+<li><strong>MyTools.java</strong>：包含了一些静态方法，用于数据的读取、保存和处理，比如从预设数据生成商品列表、保存商品信息到本地、从本地加载商品信息等。这些方法体现了模型层对于数据持久化和数据准备的处理能力。</li>
+</ul>
+<h4 id="View（视图）"><a href="#View（视图）" class="headerlink" title="View（视图）"></a>View（视图）</h4><p><strong>视图层</strong>负责用户界面的展示，即用户看到并与之交互的部分。</p>
+<ul>
+<li><strong>show.jsp</strong>：展示商品列表的页面，属于视图层，它接收模型层（如通过<code>application.getAttribute(&quot;goodslist&quot;)</code>）传递过来的商品数据，并以适合用户查看的方式展现，同时提供购买链接，引导用户进行操作。</li>
+<li><strong>shopcar.jsp</strong>：显示购物车详情的页面，也是视图层的一部分，它展示了购物车中的商品名称、数量、单价和总价等信息，并提供了继续购物和清空购物车的功能按钮。</li>
+<li><strong>littleShopcar.jsp</strong>：这是一个简化版的购物车视图，仅展示购物车中商品的名称和图片，用于快速概览购物车内容，同样属于视图层。</li>
+</ul>
+<h4 id="Controller（控制器）"><a href="#Controller（控制器）" class="headerlink" title="Controller（控制器）"></a>Controller（控制器）</h4><p><strong>控制器层</strong>负责接收用户的输入，处理用户请求，并将处理结果转发给模型和视图。</p>
+<ul>
+<li><strong>虽然没有直接列出具体的Java控制器类（如在Spring MVC或Struts框架中常见的Controller类），但从描述中可以推测</strong>：<code>docar.jsp</code>承担了一定程度上的控制器角色。在传统的JSP模式下，JSP页面本身可能混合了视图和控制器的逻辑，通过脚本let（如<code>&lt;% %&gt;</code>）来处理请求参数（例如<code>request.getParameter(&quot;action&quot;)</code>），根据不同的用户动作（如“购买商品”、“移除商品”、“清空购物车”）执行相应的业务逻辑，这实际上就是在扮演控制器的角色。它负责解析用户的请求，调用模型层的方法处理数据，并最终决定返回哪个视图给用户。</li>
+</ul>
+<h3 id="（2）转发与重定向的详细区别及应用场景"><a href="#（2）转发与重定向的详细区别及应用场景" class="headerlink" title="（2）转发与重定向的详细区别及应用场景"></a>（2）转发与重定向的详细区别及应用场景</h3><p><strong>转发（Forward）：</strong></p>
+<ul>
+<li><p><strong>服务器行为</strong>：转发发生在服务器端，当客户端发送请求后，服务器接收到请求并在服务器内部处理，决定将请求转发给另一个资源，整个过程中客户端并不知道这个过程。</p>
+</li>
+<li><p><strong>一次请求</strong>：对客户端而言，整个过程是一次请求，服务器处理完后直接将结果返回给客户端，因此效率较高。</p>
+</li>
+<li><p><strong>地址栏不变</strong>：浏览器的地址栏不会显示转发的目标地址，仍然是最初的请求URL。</p>
+</li>
+<li><p><strong>数据共享</strong>：由于是单次请求，请求对象（如HttpServletRequest）中的数据可以在转发过程中被传递，多个资源之间可以共享请求数据。</p>
+</li>
+<li><p><strong>限制在同一Web应用内</strong>：转发通常限于将请求转发给同一Web应用内的其他资源。</p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;jsp:forward page=<span class="string">&quot;welcome.jsp&quot;</span>&gt;</span><br><span class="line">    &lt;jsp:param name=<span class="string">&quot;message&quot;</span> value=<span class="string">&quot;Hello from Index Page&quot;</span>/&gt;</span><br><span class="line">&lt;/jsp:forward&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>重定向（Redirect）：</strong></p>
+<ul>
+<li><p><strong>客户端行为</strong>：重定向是由服务器向客户端发送一个状态码（通常是HTTP状态码302或301），指示客户端重新发起一个新请求到指定的URL。这意味着客户端需要再次发送请求。</p>
+</li>
+<li><p><strong>两次请求</strong>：整个过程涉及两次独立的HTTP请求，因此相对慢一些。</p>
+</li>
+<li><p><strong>地址栏改变</strong>：浏览器地址栏会显示重定向后的新URL。</p>
+</li>
+<li><p><strong>不保留请求数据</strong>：两次独立的请求意味着第一次请求的数据不会自动传递给第二次请求，因此不适用于需要共享数</p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;% </span><br><span class="line">  response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);</span><br><span class="line">  response.setHeader(<span class="string">&quot;Location&quot;</span>, <span class="string">&quot;welcome.jsp&quot;</span>);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>HttpServletResponse.SC_MOVED_PERMANENTLY</code>（301状态码，表示永久移动）</p>
+<p><code>HttpServletResponse.SC_FOUND</code>（302状态码，临时重定向）</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="（3）JSP中include指令与include动作的对比"><a href="#（3）JSP中include指令与include动作的对比" class="headerlink" title="（3）JSP中include指令与include动作的对比"></a>（3）JSP中include指令与include动作的对比</h3><h4 id="include指令"><a href="#include指令" class="headerlink" title="include指令 (&lt;%@ include %&gt;)"></a>include指令 (<code>&lt;%@ include %&gt;</code>)</h4><ul>
+<li><strong>类型</strong>：静态包含。</li>
+<li><strong>时机</strong>：编译时，JSP页面转换为Servlet代码时执行。</li>
+<li><strong>特点</strong>：包含页面的内容直接嵌入到主页面中，如同一个文件。<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%@ include file=<span class="string">&quot;header.jsp&quot;</span> %&gt;</span><br></pre></td></tr></table></figure>
+<code>header.jsp</code>的内容会在编译阶段直接插入到当前JSP页面中，生成的Servlet代码中将包含这部分内容。</li>
+</ul>
+<h4 id="include动作"><a href="#include动作" class="headerlink" title="include动作 (&lt;jsp:include&gt;)"></a>include动作 (<code>&lt;jsp:include&gt;</code>)</h4><ul>
+<li><strong>类型</strong>：动态包含。</li>
+<li><strong>时机</strong>：运行时，当JSP页面被执行时。</li>
+<li><strong>特点</strong>：每次请求时独立执行包含页面，可以传递参数。<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;jsp:include page=<span class="string">&quot;menu.jsp&quot;</span>&gt;</span><br><span class="line">  &lt;jsp:param name=<span class="string">&quot;category&quot;</span> value=<span class="string">&quot;newArrivals&quot;</span> /&gt;</span><br><span class="line">&lt;/jsp:include&gt;</span><br></pre></td></tr></table></figure>
+<code>menu.jsp</code>在每次请求时都会被单独执行，而且可以通过<code>jsp:param</code>标签传递参数<code>category</code>到被包含页面。</li>
+</ul>
+<h3 id="（4）三层架构与MVC模式的详细对比"><a href="#（4）三层架构与MVC模式的详细对比" class="headerlink" title="（4）三层架构与MVC模式的详细对比"></a>（4）三层架构与MVC模式的详细对比</h3><h4 id="三层架构包含dao，service，controller"><a href="#三层架构包含dao，service，controller" class="headerlink" title="三层架构包含dao，service，controller"></a>三层架构包含dao，service，controller</h4><p><strong>控制层（Controller）</strong>：控制层位于架构的最前端，直接面对用户或外部请求。它负责接收用户的输入，并将请求转发给相应的服务层处理，最后返回处理结果给用户。控制层的主要任务是请求处理和数据转发，它不包含业务逻辑，确保了用户接口的轻量化。</p>
+<p><strong>业务逻辑层（Service）</strong>：服务层是三层架构中的中心，承担着处理应用程序核心业务逻辑的任务。这一层解释用户的请求，执行必要的业务计算，调用数据访问层进行数据持久化操作，并返回执行结果。将业务逻辑封装在服务层中有助于保持业务处理的一致性和复用性。</p>
+<p><strong>数据访问层（DAO）</strong>：数据访问层是与数据库或其他持久化存储方式直接交互的层次。DAO层的职责是执行具体的数据库操作，如增删查改（CRUD），并返回操作结果。通过抽象化数据访问，DAO层使得业务逻辑层与数据存储细节解耦，提高了系统的适应性和稳定性。</p>
+<p><img src="/hexo-blog/./img/note/javaweb%E8%80%83%E8%AF%95/3426074a4dc44548bb471ffa571a070atplv-k3u1fbpfcp-jj-mark3024000q75.webp" alt="0_g2X2HxArvJCp3RQ0.png"></p>
+<h4 id="与MVC模式的关系："><a href="#与MVC模式的关系：" class="headerlink" title="与MVC模式的关系："></a><strong>与MVC模式的关系：</strong></h4><p>MVC的View和Controller可以看作是三层架构中的表现层，而MVC的Model与三层架构的业务逻辑层和数据访问层相对应。MVC更侧重于界面的构建和用户交互，而三层架构侧重于逻辑分层和职责划分，两者结合可以构建出结构清晰、易于维护的大型应用系统。</p>
+<blockquote>
+<p>三层架构更适合大型应用，主要是将controller解耦合，只需在controller层调用service层的逻辑代码，service再调用dao数据访问层的代码，并且<strong>方便测试</strong>,</p>
+<p>如果说所有逻辑代码都写在controller，会导致<strong>复用性降低</strong>，<strong>测试难度增加</strong>，<strong>扩展性受限</strong>，分层利于解耦，dao层函数复用</p>
+<p>如果说这个是个小层应用，不需要太多的业务代码，只需要curd，使用mvc即可，否则全写在controller成容易造成<strong>代码冗余</strong></p>
+</blockquote>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子:"></a>例子:</h4><p><img src="/hexo-blog/./img/note/javaweb%E8%80%83%E8%AF%95/image-20240613192032910.png" alt="image-20240613192032910"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://struggle-upwards.github.io/hexo-blog">浩瀚星河</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://struggle-upwards.github.io/hexo-blog/2024/06/13/javaweb%E8%80%83%E8%AF%95/">https://struggle-upwards.github.io/hexo-blog/2024/06/13/javaweb考试/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://struggle-upwards.github.io/hexo-blog" target="_blank">struggle_forwards</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/hexo-blog/tags/java/">java</a></div><div class="post_share"><div class="social-share" data-image="/hexo-blog/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/hexo-blog/2024/06/12/openguass%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E9%AA%8C/" title="openguass第一次实验"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">openguass第一次实验</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/hexo-blog/img/avatar.png" onerror="this.onerror=null;this.src='/hexo-blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">浩瀚星河</div><div class="author-info__description">一位编程爱好者</div></div><div class="card-info-data site-data is-center"><a href="/hexo-blog/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/hexo-blog/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/hexo-blog/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/struggle-upwards" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://blog.csdn.net/Pzj15817073966?type=blog" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是我的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89MVC%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E%E5%8F%8AMyShop%E5%AE%9E%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-text">（1）MVC模式的详细说明及MyShop实例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Model%EF%BC%88%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="toc-text">Model（模型）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#View%EF%BC%88%E8%A7%86%E5%9B%BE%EF%BC%89"><span class="toc-text">View（视图）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Controller%EF%BC%88%E6%8E%A7%E5%88%B6%E5%99%A8%EF%BC%89"><span class="toc-text">Controller（控制器）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E8%BD%AC%E5%8F%91%E4%B8%8E%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E8%AF%A6%E7%BB%86%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">（2）转发与重定向的详细区别及应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89JSP%E4%B8%ADinclude%E6%8C%87%E4%BB%A4%E4%B8%8Einclude%E5%8A%A8%E4%BD%9C%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">（3）JSP中include指令与include动作的对比</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#include%E6%8C%87%E4%BB%A4"><span class="toc-text">include指令 (&lt;%@ include %&gt;)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#include%E5%8A%A8%E4%BD%9C"><span class="toc-text">include动作 (&lt;jsp:include&gt;)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8EMVC%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%AF%A6%E7%BB%86%E5%AF%B9%E6%AF%94"><span class="toc-text">（4）三层架构与MVC模式的详细对比</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E5%8C%85%E5%90%ABdao%EF%BC%8Cservice%EF%BC%8Ccontroller"><span class="toc-text">三层架构包含dao，service，controller</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8EMVC%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%9A"><span class="toc-text">与MVC模式的关系：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-text">例子:</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hexo-blog/2024/06/13/javaweb%E8%80%83%E8%AF%95/" title="javaweb考试">javaweb考试</a><time datetime="2024-06-13T10:49:09.000Z" title="发表于 2024-06-13 18:49:09">2024-06-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hexo-blog/2024/06/12/openguass%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E9%AA%8C/" title="openguass第一次实验">openguass第一次实验</a><time datetime="2024-06-12T15:20:02.000Z" title="发表于 2024-06-12 23:20:02">2024-06-12</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/hexo-blog/img/default_top_img.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 浩瀚星河</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/hexo-blog/js/utils.js?v=4.13.0"></script><script src="/hexo-blog/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/hexo-blog/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
