@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>链接器与逻辑、物理地址解析</title>
+      <link href="/hexo-blog/2024/06/20/%E9%93%BE%E6%8E%A5%E5%99%A8%E4%B8%8E%E9%80%BB%E8%BE%91%E3%80%81%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90/"/>
+      <url>/hexo-blog/2024/06/20/%E9%93%BE%E6%8E%A5%E5%99%A8%E4%B8%8E%E9%80%BB%E8%BE%91%E3%80%81%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90/</url>
+      
+        <content type="html"><![CDATA[<h1 id="链接器与逻辑、物理地址解析"><a href="#链接器与逻辑、物理地址解析" class="headerlink" title="链接器与逻辑、物理地址解析"></a>链接器与逻辑、物理地址解析</h1><p><img src="/hexo-blog/img/note/%E9%93%BE%E6%8E%A5%E5%99%A8%E4%B8%8E%E9%80%BB%E8%BE%91%E3%80%81%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90/image-20240620115456830.png" alt="image-20240620115456830"></p><p>在软件开发与执行流程中，链接器、逻辑地址、物理地址三者紧密相关，共同支撑起程序从源码到可执行文件的桥梁。下面是对这三个概念及其相互作用的简要概述。</p><h2 id="逻辑地址"><a href="#逻辑地址" class="headerlink" title="逻辑地址"></a>逻辑地址</h2><p><strong>逻辑地址</strong>，在程序设计和编译阶段使用，是程序内部视角的内存地址表示。它为程序提供了一个抽象的地址空间，使得开发者无需考虑实际物理内存布局。逻辑地址通过编译和链接过程逐步构建，但不直接对应硬件内存的实际位置。</p><h2 id="物理地址"><a href="#物理地址" class="headerlink" title="物理地址"></a>物理地址</h2><p><strong>物理地址</strong>，又称绝对地址，是计算机内存芯片上的实际存储位置，由CPU直接寻址。它是内存中数据的实际存放地址，与硬件直接关联，与操作系统如何管理内存无关。</p><h2 id="链接器的作用"><a href="#链接器的作用" class="headerlink" title="链接器的作用"></a>链接器的作用</h2><p><strong>链接器</strong>作为编译后的重要一环，帮助可执行程序形成完整的逻辑地址，其主要职责是：</p><ol><li><strong>整合目标文件</strong>：将编译器生成的多个目标文件（包含代码、数据及其逻辑地址信息）合并为单一可执行文件。</li><li><strong>解析符号</strong>：解决目标文件间函数、变量的引用问题，确保逻辑地址的有效链接。</li><li><strong>重定位</strong>：调整代码和数据段的逻辑地址，为最终加载到内存做准备。虽然链接器处理的是逻辑地址，但它通过重定位为物理地址映射打下基础。</li><li><strong>库集成</strong>：集成静态库或动态库，处理外部符号引用，保持逻辑地址的一致性。</li><li><strong>生成可执行文件</strong>：最终输出的可执行文件中，逻辑地址布局已定，但具体映射到物理内存的过程通常在程序加载或运行时由操作系统完成。</li></ol><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>链接器在程序生命周期中起到了承前启后的作用，它基于逻辑地址进行整合与优化，为程序的物理地址映射奠定了基础。理解链接器的工作原理，以及逻辑地址与物理地址的区别，是深入学习操作系统内存管理和程序执行流程的关键。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>操作系统ch3</title>
+      <link href="/hexo-blog/2024/06/19/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9Fch3/"/>
+      <url>/hexo-blog/2024/06/19/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9Fch3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="操作系统ch3"><a href="#操作系统ch3" class="headerlink" title="操作系统ch3"></a>操作系统ch3</h1><h2 id="一、银行家算法补充题-必做"><a href="#一、银行家算法补充题-必做" class="headerlink" title="一、银行家算法补充题(必做)"></a>一、银行家算法补充题(必做)</h2><p><img src="/hexo-blog/img/note/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9Fch3/image-20240619134927087.png" alt="image-20240619134927087"><img src="/img/note/操作系统ch3/image-20240619135128430.png" alt="image-20240619135128430" style="zoom: 50%;" />   </p><h2 id="二、死锁检测补充题目"><a href="#二、死锁检测补充题目" class="headerlink" title="二、死锁检测补充题目"></a>二、死锁检测补充题目</h2><p>1.系统拥有的资源有 R1、R2、R3、R4、R5 和 R6 数量分别为 2、1、1、1、1 和 2，当前进程有 A、B、C、D 和 E，已知当前进程和资源的申请、分配关系，如下表所示。</p><p>请画出当前系统的资源分配图，并给出简化过程。</p><p><img src="/hexo-blog/img/note/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9Fch3/wps1.png" alt="img"> </p><p> <img src="/hexo-blog/img/note/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9Fch3/image-20240619154927198.png" alt="image-20240619154927198"></p><p>2.若系统有同类资源m个，被n个进程共享，当m&gt;n时，每个进程最多可以请求(m&#x2F;n向上取整)个这类资源，使系统一定不会发生死锁。当m≤时每个进程最多可以请求1个这类资源，使系统一定不会发生死锁。注意：本题是求最大值。</p><h2 id="三、思维导图"><a href="#三、思维导图" class="headerlink" title="三、思维导图"></a>三、思维导图</h2><h2 id="四、选择题"><a href="#四、选择题" class="headerlink" title="四、选择题"></a>四、选择题</h2><ol><li><p>银行家算法是一种算法 __<br>A、死锁解除<br>B、死锁检测<br>C、死锁预防<br>D、死锁避免  </p></li><li><p>某系统中有3个并发进程，都需要同类资源4个，请问该系统中不会发生死锁的最少资源数是__<br>A、9<br>B、10<br>C、11<br>D、12  </p></li><li><p>某计算机系统中有8台打印机，有K个进程竞争使用，每个进程最多需要3台打印机。该系统可能会发生死锁的K的最小值是__<br>A、2<br>B、3<br>C、4<br>D、5  </p></li><li><p>3个进程共享4个同类资源，这些资源的分配与释放只能一次一个。已知每一个进程最多需要两个该类资源，则该系统__<br>A、有某进程可能永远得不到该类资源<br>B、必然有玩死锁<br>C、当进程请求该类资源时立刻就能得到<br>D、必然无死锁  </p></li><li><p>破坏死锁的4个必要条件之一就可以预防死锁。若规定一个进程在请求新资源之前，首先释放已占有的资源，这是破坏了哪一个条件？__<br>A、不可抢占条件<br>B、互斥条件<br>C、请求和保持条件<br>D、环路等待条件</p></li></ol><p><strong>1-5</strong>    DBCDC</p><h2 id="五、填空题"><a href="#五、填空题" class="headerlink" title="五、填空题"></a>五、填空题</h2><p>1 在计算机系统当中，资源可以分为两种类型：可抢占的资源和不可抢占的资源。对于可抢占的资源，可以通过重新分配资源的方法来避免死锁。那么在计算机系统当中，哪一些资源是可抢占的资源？请给出两个具体的例子：<strong>CPU</strong>和<strong>内存</strong> 。</p><p>2 在一个系统中，要想形成死锁，至少要有<strong>2</strong>个进程。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>go中并发编程</title>
       <link href="/hexo-blog/2024/06/16/go%E4%B8%AD%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
       <url>/hexo-blog/2024/06/16/go%E4%B8%AD%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</url>
