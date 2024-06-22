@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>git的冷知识 | struggle_forwards</title><meta name="author" content="浩瀚星河"><meta name="copyright" content="浩瀚星河"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="git的冷知识git branch# 初始化的时候默认没有名字的分支# gitte提交(默认分支为master)只有你执行了git push origin master之后才会与本地产生联系，本地分支被命名为master分支# github提交(默认分支为main)git branch -M main # 将未命名的分支重命名为main分支，与远程默认的origin&#x2F;main匹配# 单纯的想改分支">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git的冷知识">
+<meta property="og:url" content="https://struggle-upwards.github.io/hexo-blog/2024/06/21/git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="struggle_forwards">
+<meta property="og:description" content="git的冷知识git branch# 初始化的时候默认没有名字的分支# gitte提交(默认分支为master)只有你执行了git push origin master之后才会与本地产生联系，本地分支被命名为master分支# github提交(默认分支为main)git branch -M main # 将未命名的分支重命名为main分支，与远程默认的origin&#x2F;main匹配# 单纯的想改分支">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://struggle-upwards.github.io/hexo-blog/img/avatar.png">
+<meta property="article:published_time" content="2024-06-21T12:41:49.000Z">
+<meta property="article:modified_time" content="2024-06-22T13:15:13.893Z">
+<meta property="article:author" content="浩瀚星河">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://struggle-upwards.github.io/hexo-blog/img/avatar.png"><link rel="shortcut icon" href="/hexo-blog/img/favicon.png"><link rel="canonical" href="https://struggle-upwards.github.io/hexo-blog/2024/06/21/git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/hexo-blog/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/hexo-blog/',
+  algolia: undefined,
+  localSearch: {"path":"/hexo-blog/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'git的冷知识',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-22 21:15:13'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/hexo-blog/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/hexo-blog/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/hexo-blog/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/hexo-blog/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/hexo-blog/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="https://struggle-upwards.github.io/"><i class="fa-fw fa fa-book"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/hexo-blog/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/hexo-blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/hexo-blog/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/hexo-blog/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/hexo-blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/hexo-blog/img/default_top_img.png')"><nav id="nav"><span id="blog-info"><a href="/hexo-blog/" title="struggle_forwards"><span class="site-name">struggle_forwards</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/hexo-blog/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="https://struggle-upwards.github.io/"><i class="fa-fw fa fa-book"></i><span> 文档</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/hexo-blog/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/hexo-blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/hexo-blog/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/hexo-blog/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/hexo-blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">git的冷知识</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-21T12:41:49.000Z" title="发表于 2024-06-21 20:41:49">2024-06-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-22T13:15:13.893Z" title="更新于 2024-06-22 21:15:13">2024-06-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/hexo-blog/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="git的冷知识"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="git的冷知识"><a href="#git的冷知识" class="headerlink" title="git的冷知识"></a>git的冷知识</h1><h3 id="git-branch"><a href="#git-branch" class="headerlink" title="git branch"></a>git branch</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 初始化的时候默认没有名字的分支</span></span><br><span class="line"><span class="comment"># gitte提交(默认分支为master)只有你执行了git push origin master之后才会与本地产生联系，本地分支被命名为master分支</span></span><br><span class="line"><span class="comment"># github提交(默认分支为main)</span></span><br><span class="line">git branch -M main <span class="comment"># 将未命名的分支重命名为main分支，与远程默认的origin/main匹配</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 单纯的想改分支名</span></span><br><span class="line">git branch -M main-back <span class="comment"># 当前分支为main-front，执行此git指令，分支改名为main-back</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># main默认的远程分支是main</span></span><br><span class="line"><span class="comment"># git push 远程仓库别名 本地分支名:远程分支名</span></span><br><span class="line">git push origin main <span class="comment"># 效果相当与git push origin main:main</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="git-log"><a href="#git-log" class="headerlink" title="git log"></a>git log</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># git log 打印的默认是打印当前本地分支对应的远程分支的提交历史</span></span><br><span class="line">git <span class="built_in">log</span> <span class="comment"># 假设当前是main分支,等价于查看origin/main分支的提交信息,即git log origin/main</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># git log 查看指定分支的提交历史</span></span><br><span class="line">git <span class="built_in">log</span> upstream/main</span><br><span class="line"><span class="comment"># 如果想要查看所有分支的提交历史</span></span><br><span class="line">git config --global alias.tree <span class="string">&#x27;log --all --graph --decorate --oneline&#x27;</span></span><br><span class="line">git tree <span class="comment"># 可以展示所有本地分支和远程跟踪分支的提交历史</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="git-fetch"><a href="#git-fetch" class="headerlink" title="git fetch"></a>git fetch</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># git fetch 会把默认的origin仓库的最新代码拉到本地，但是不会与本地代码合并</span></span><br><span class="line"><span class="comment"># 同时git fetch也可以指定仓库,指定拉取的分支</span></span><br><span class="line">git fetch upstream main <span class="comment"># 将upstream远程仓库中的main分支拉取到本地，并且不会产生合并</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># git的diff算法，将本地的记录和远程分支的代码作比较</span></span><br><span class="line"><span class="comment"># 按 Space 键向下翻页，按 b 键回退一页，按 q 键退出分页器</span></span><br><span class="line">git diff main origin/main <span class="comment"># 输出为空则没有差异</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="git-merge"><a href="#git-merge" class="headerlink" title="git merge"></a>git merge</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 快合并,不会产生新的合并历史</span></span><br><span class="line">git merge origin/main <span class="comment"># 假设当前为main分支，把远程的main分支合并到当前分支(--ff) </span></span><br><span class="line"><span class="comment"># 慢合并,会产生新的提交历史</span></span><br><span class="line">git merge origin/main --no-ff <span class="comment"># 执行后会进入vim模式,书写commmit信息,需要重新提交到origin/main</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git pull origin main </span><br><span class="line">==&gt; git fetch origin main &amp;&amp; git merge origin/main --ff <span class="comment"># 快合并</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一般合并的较好解决方式</span></span><br><span class="line">git fetch origin main</span><br><span class="line"><span class="comment"># 查看本地main和远程main的差异</span></span><br><span class="line">git diff main origin/main</span><br><span class="line"><span class="comment"># 选择合并的方式 --ff,--no-ff</span></span><br><span class="line">git merge origin/main [options...]</span><br><span class="line"><span class="comment"># 再手动解决冲突</span></span><br><span class="line">vim filename</span><br><span class="line"><span class="comment"># 重新提交</span></span><br><span class="line">git add . &amp;&amp; git commit -m <span class="string">&quot;合并冲突&quot;</span> &amp;&amp; git push</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="–no-ff和–ff的区别"><a href="#–no-ff和–ff的区别" class="headerlink" title="–no-ff和–ff的区别"></a>–no-ff和–ff的区别</h3><img src="/git的冷知识/65abfe6006491dc9c301d2bb8b818d10.png" alt="img" style="zoom: 76%;" />
+
+<p><img src="/hexo-blog/git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86/164a116afdfd225ed66c7a6bb9057c8a.png" alt="img"></p>
+<p><img src="/hexo-blog/git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86/image-20240622211200880.png" alt="image-20240622211200880"></p>
+<blockquote>
+<p>明显–no-ff更加适合commit的回退，使用–ff需要手动回退多次，因为–no-ff生成一个合并的commit提交，</p>
+<p>git revert -m [position] <commit-id>可以选择保留哪边</p>
+</blockquote>
+<h3 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 类似git merge只是使提交历史更加线性</span></span><br><span class="line">git fetch origin main</span><br><span class="line">git diff main origin/main</span><br><span class="line">git rebase origin/main</span><br></pre></td></tr></table></figure>
+
+<h4 id="git-rebase-前"><a href="#git-rebase-前" class="headerlink" title="git rebase 前"></a>git rebase 前</h4><p><img src="/hexo-blog/git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86/image-20240622154204336.png" alt="image-20240622154204336"></p>
+<h4 id="git-rebase-后"><a href="#git-rebase-后" class="headerlink" title="git rebase 后"></a>git rebase 后</h4><p><img src="/hexo-blog/git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86/image-20240622154355094.png" alt="image-20240622154355094"></p>
+<blockquote>
+<p>可以发现通过rebase本质改变的使origin&#x2F;main的位置，origin&#x2F;main在本地分支下游，就算修改了origin&#x2F;main的位置也能保证提交历史的线性</p>
+</blockquote>
+<h3 id="git-merge和git-rebase的取舍"><a href="#git-merge和git-rebase的取舍" class="headerlink" title="git merge和git rebase的取舍"></a>git merge和git rebase的取舍</h3><blockquote>
+<p><code>git merge</code> 适合于希望保持历史完整性和追踪合并事件的场景。</p>
+<p><code>git rebase</code> 更倾向于维护简洁、线性的提交历史，尤其是在个人工作流或准备提交前的整理阶段。</p>
+</blockquote>
+<h3 id="git-merge中–ff和–no-ff的取舍"><a href="#git-merge中–ff和–no-ff的取舍" class="headerlink" title="git merge中–ff和–no-ff的取舍"></a>git merge中–ff和–no-ff的取舍</h3><blockquote>
+<p><code>--ff</code>（fast-forward）追求简洁，直接移动指针，适用于内部开发或无合并冲突的简单情况。</p>
+<p><code>--no-ff</code>强制创建合并提交，明晰历史分界，更适合团队协作和需要明确追踪合并历史的场景。</p>
+</blockquote>
+<h3 id="git-revert"><a href="#git-revert" class="headerlink" title="git revert"></a>git revert</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 撤销到某一次commit之前，并生成一次新的commit提交(记录回退操作)</span></span><br><span class="line">git revert &lt;commit-id&gt; <span class="comment"># 不是合并提交</span></span><br><span class="line"><span class="comment"># 合并提交</span></span><br><span class="line">git show &lt;commit-id&gt; <span class="comment"># 查看合并的两个分支的位置,第一个对应position为1,第二个对应position为2</span></span><br><span class="line">git revert -m &lt;position&gt; &lt;commit-id&gt; <span class="comment"># positionz</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 最后需要重新提交回退信息</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<h4 id="普通提交的撤销"><a href="#普通提交的撤销" class="headerlink" title="普通提交的撤销"></a>普通提交的撤销</h4><p>回退到”windows新增4.txt之前”,此时当前分支文件只有1.txt,2.txt,3.txt</p>
+<p><img src="/hexo-blog/git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86/image-20240622170518165.png" alt="image-20240622170518165"></p>
+<h4 id="合并分支的撤销"><a href="#合并分支的撤销" class="headerlink" title="合并分支的撤销"></a>合并分支的撤销</h4><img src="/git的冷知识/image-20240622175544860.png" alt="image-20240622175544860" style="zoom:125%;" />
+
+<img src="/git的冷知识/image-20240622175701287.png" alt="image-20240622175701287" style="zoom:85%;" />
+
+
+
+<blockquote>
+<p>此时1.txt内容回退到commit(操作系统windows.上的1.txt提交)后的内容</p>
+</blockquote>
+<blockquote>
+<p><code>git revert &lt;commit&gt;</code> 允许你创建一个新的提交来撤销那个引入问题的提交中的所有更改，而不会影响其他提交。这样既修复了问题，又保持了提交历史的清晰和完整，展现了问题是如何被解决的，这对于团队协作和后期的代码审查、问题追踪非常有帮助。</p>
+</blockquote>
+<h3 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 回退到指定版本</span></span><br><span class="line">git reset [--soft | --mixed | --hard] [HEAD]</span><br><span class="line"></span><br><span class="line"><span class="comment"># --mixed(默认)</span></span><br><span class="line">git reset --mixed [HEAD] <span class="comment"># 不会暂存到本地,需要手动add和commit</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --soft</span></span><br><span class="line">git reset --soft [HEAD] <span class="comment"># 会暂存到本地,不需要手动add和commit</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --hard(危险操作)</span></span><br><span class="line">git reset --soft [HEAD] <span class="comment"># 会暂存到本地,清空HEAD之后的所有commit记录</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="–mixed"><a href="#–mixed" class="headerlink" title="–mixed"></a>–mixed</h4><p><img src="/hexo-blog/git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86/image-20240622181709378.png" alt="image-20240622181709378"></p>
+<p><img src="/hexo-blog/git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86/image-20240622181752213.png" alt="image-20240622181752213"></p>
+<h4 id="–soft"><a href="#–soft" class="headerlink" title="–soft"></a>–soft</h4><p><img src="/hexo-blog/git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86/image-20240622182035541.png" alt="image-20240622182035541"></p>
+<h4 id="–hard"><a href="#–hard" class="headerlink" title="–hard"></a>–hard</h4><p><img src="/hexo-blog/git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86/image-20240622190945940.png" alt="image-20240622190945940"></p>
+<blockquote>
+<p>与–soft区别就是暂存区的文件也会回退,4.txt已经访问不到了</p>
+</blockquote>
+<h3 id="git-reflog-备份神器"><a href="#git-reflog-备份神器" class="headerlink" title="git reflog(备份神器)"></a>git reflog(备份神器)</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 假如你执行了以下命令</span></span><br><span class="line">git reset &lt;commit-id&gt; --hard &amp;&amp; git push -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># git reflog可以查看本地的head变化的历史</span></span><br><span class="line"><span class="comment"># 只要 HEAD 发生变化，就可以通过 reflog 查看到</span></span><br><span class="line">git reset &lt;commit-id&gt; --soft &amp;&amp; git push -f <span class="comment"># 就能回退到之前强制推送前远程仓库的状态</span></span><br><span class="line"><span class="comment"># 一般这个commit-id使第二个(HEAD&#123;1&#125;),因为在上面指令reset时HEAD指向改变了，所以是第二个</span></span><br><span class="line"><span class="comment"># HEAD&#123;n&#125;,n代表偏移量</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/hexo-blog/git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86/image-20240622191703199.png" alt="image-20240622191703199"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://struggle-upwards.github.io/hexo-blog">浩瀚星河</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://struggle-upwards.github.io/hexo-blog/2024/06/21/git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86/">https://struggle-upwards.github.io/hexo-blog/2024/06/21/git的冷知识/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://struggle-upwards.github.io/hexo-blog" target="_blank">struggle_forwards</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/hexo-blog/tags/git/">git</a></div><div class="post_share"><div class="social-share" data-image="/hexo-blog/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/hexo-blog/2024/06/21/gorm%E7%9A%84%E7%94%A8%E9%80%94/" title="gorm的用途"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">gorm的用途</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/hexo-blog/img/avatar.png" onerror="this.onerror=null;this.src='/hexo-blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">浩瀚星河</div><div class="author-info__description">一位编程爱好者</div></div><div class="card-info-data site-data is-center"><a href="/hexo-blog/archives/"><div class="headline">文章</div><div class="length-num">35</div></a><a href="/hexo-blog/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/hexo-blog/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/struggle-upwards" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://blog.csdn.net/Pzj15817073966?type=blog" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是我的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86"><span class="toc-text">git的冷知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#git-branch"><span class="toc-text">git branch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-push"><span class="toc-text">git push</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-log"><span class="toc-text">git log</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-fetch"><span class="toc-text">git fetch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-diff"><span class="toc-text">git diff</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-merge"><span class="toc-text">git merge</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-pull"><span class="toc-text">git pull</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%93no-ff%E5%92%8C%E2%80%93ff%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">–no-ff和–ff的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-rebase"><span class="toc-text">git rebase</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#git-rebase-%E5%89%8D"><span class="toc-text">git rebase 前</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#git-rebase-%E5%90%8E"><span class="toc-text">git rebase 后</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-merge%E5%92%8Cgit-rebase%E7%9A%84%E5%8F%96%E8%88%8D"><span class="toc-text">git merge和git rebase的取舍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-merge%E4%B8%AD%E2%80%93ff%E5%92%8C%E2%80%93no-ff%E7%9A%84%E5%8F%96%E8%88%8D"><span class="toc-text">git merge中–ff和–no-ff的取舍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-revert"><span class="toc-text">git revert</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E6%8F%90%E4%BA%A4%E7%9A%84%E6%92%A4%E9%94%80"><span class="toc-text">普通提交的撤销</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E7%9A%84%E6%92%A4%E9%94%80"><span class="toc-text">合并分支的撤销</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-reset"><span class="toc-text">git reset</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%80%93mixed"><span class="toc-text">–mixed</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%80%93soft"><span class="toc-text">–soft</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%80%93hard"><span class="toc-text">–hard</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-reflog-%E5%A4%87%E4%BB%BD%E7%A5%9E%E5%99%A8"><span class="toc-text">git reflog(备份神器)</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hexo-blog/2024/06/21/git%E7%9A%84%E5%86%B7%E7%9F%A5%E8%AF%86/" title="git的冷知识">git的冷知识</a><time datetime="2024-06-21T12:41:49.000Z" title="发表于 2024-06-21 20:41:49">2024-06-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/hexo-blog/2024/06/21/gorm%E7%9A%84%E7%94%A8%E9%80%94/" title="gorm的用途">gorm的用途</a><time datetime="2024-06-21T09:13:16.000Z" title="发表于 2024-06-21 17:13:16">2024-06-21</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/hexo-blog/img/default_top_img.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 浩瀚星河</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/hexo-blog/js/utils.js?v=4.13.0"></script><script src="/hexo-blog/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/hexo-blog/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
